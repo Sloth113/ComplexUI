@@ -12,6 +12,9 @@ public class MyButtonEditor : UnityEditor.UI.ButtonEditor {
         
         base.OnInspectorGUI();
         button.m_timer = EditorGUILayout.FloatField("Test: ", 100000);
+        ScriptableTest thing = button.m_myUI;
+        button.m_myUI = (ScriptableTest)EditorGUILayout.ObjectField("Script:", thing, typeof(ScriptableTest), false);
+       
     }
 
 }
