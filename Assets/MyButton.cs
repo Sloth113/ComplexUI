@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -8,21 +9,52 @@ public class MyButton :  Button {
 
     public float m_timer = 0;
     
-    public ScriptableTest m_myUI;
+    public Tween[] m_overTweens;
+    public Tween[] m_exitTweens;
+    public Tween[] m_downTweens;
+    public Tween[] m_upTweens;
+    public Tween[] m_enabledTweens;
+    public Tween[] m_disabledTweens;
 
-    private bool m_isSelected = false;
-    public bool IsSelected
+    public override void OnPointerEnter(PointerEventData eventData)
     {
-        get
+        base.OnPointerEnter(eventData);
+        foreach(Tween t in m_overTweens)
         {
-            return m_isSelected;
-        }
-        set
-        {
-            m_isSelected = value;
+            if (t != null)
+                t.Apply(this.gameObject);
         }
     }
-    
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerExit(eventData);
+        foreach (Tween t in m_exitTweens)
+        {
+            if (t != null)
+                t.Apply(this.gameObject);
+        }
+    }
+
+    public override void OnPointerDown(PointerEventData eventData)
+    {
+        base.OnPointerDown(eventData);
+        foreach (Tween t in m_downTweens)
+        {
+            if (t != null)
+                t.Apply(this.gameObject);
+        }
+    }
+    public override void OnPointerUp(PointerEventData eventData)
+    {
+        base.OnPointerUp(eventData);
+        foreach (Tween t in m_upTweens)
+        {
+            if (t != null)
+                t.Apply(this.gameObject);
+        }
+    }
+
     public void Shake(float time)
     {
         if (iTween.Count(gameObject) == 0)

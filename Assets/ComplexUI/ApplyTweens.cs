@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Currently test class to apply tween per timer
 public class ApplyTweens : MonoBehaviour {
-    [SerializeField]    Tween[] m_tweens;
+    [SerializeField] Tween[] m_tweens;
     [SerializeField] float m_time;
     private float m_timer;
     private int m_index;
@@ -25,12 +25,15 @@ public class ApplyTweens : MonoBehaviour {
             {
                 if (m_tweens[m_index] != null)
                 {
+                   
                     m_tweens[m_index].Apply(this.gameObject);
+
                     m_index++;
                     if (m_index >= m_tweens.Length)
                     {
                         m_index = 0;
                     }
+                    
                 }
             }
             

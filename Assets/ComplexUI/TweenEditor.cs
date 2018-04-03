@@ -3,23 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Tween))]
+//Currently does nothing. 
+//[CustomEditor(typeof(Tween), true)]
 public class TweenEditor : Editor {
 
     public override void OnInspectorGUI()
     {
-        uint i = 0;
+        
         Tween item = (Tween)target;
-
-        if(item.m_type == Tween.Type.ShakeRot)
-        {
-            GUILayout.Label("THIS IS A SHAKE THING!");
-        }
-        else
-        {
-            //base.OnInspectorGUI();
-        }
-
+        
         base.OnInspectorGUI();
 
 

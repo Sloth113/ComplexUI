@@ -8,17 +8,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f331f9ff05d254d96e33d178a8ab48, type: 3}
-  m_Name: Fade
+  m_Script: {fileID: 11500000, guid: 0c95fdc7aa792154293f24ae302e18de, type: 3}
+  m_Name: ScaleDefault
   m_EditorClassIdentifier: 
-  m_type: 9
+  m_type: 3
   m_name: Tween
-  m_amount: {x: 0, y: 0, z: 0}
-  m_time: 1
+  m_amount: {x: 1, y: 1, z: 1}
+  m_time: 0.5
   m_delay: 0
-  m_local: 0
+  m_local: 1
   m_space: 1
   m_loopType: 0
-  m_useEase: 1
+  m_useEase: 0
   m_easeType: 0
-  m_alpha: 0.5
+  m_alpha: 0

@@ -8,14 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f331f9ff05d254d96e33d178a8ab48, type: 3}
-  m_Name: Tween
+  m_Script: {fileID: 11500000, guid: 0c95fdc7aa792154293f24ae302e18de, type: 3}
+  m_Name: Spin
   m_EditorClassIdentifier: 
-  m_type: 0
+  m_type: 7
   m_name: Tween
-  m_amount: {x: 0, y: 0, z: 0}
+  m_amount: {x: 0, y: 0, z: 360}
   m_time: 1
-  m_delay: 0
+  m_delay: 1
   m_local: 1
   m_space: 1
   m_loopType: 0
