@@ -24,7 +24,8 @@ namespace CUI
             ScaleAdd,
             RotateAdd,
             MoveAdd,
-            FadeTo
+            FadeTo, //Alpha fade
+            ClearAll
         }
         public Type m_type;
 
@@ -174,6 +175,9 @@ namespace CUI
                     break;
                 case Type.FadeTo:
                     obj.AddComponent<UIFade>().setData(m_alpha, m_time, m_delay + delay);//My fade script
+                    break;
+                case Type.ClearAll:
+                    iTween.Stop(obj);
                     break;
                 default:
                     break;

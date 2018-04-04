@@ -26,6 +26,7 @@ public class CharController : MonoBehaviour {
             if (changeEvent != null)
                 // HealthChange(-1);
                 changeEvent.Invoke(-1);
+            
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
