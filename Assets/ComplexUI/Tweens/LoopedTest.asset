@@ -11,14 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c95fdc7aa792154293f24ae302e18de, type: 3}
   m_Name: LoopedTest
   m_EditorClassIdentifier: 
-  m_type: 0
+  m_type: 3
   m_name: Tween
-  m_amount: {x: 0, y: 0, z: 0}
-  m_time: 1
+  m_amount: {x: 1.2, y: 1.2, z: 1.2}
+  m_time: 0.3
   m_delay: 0
   m_local: 1
   m_space: 1
-  m_loopType: 0
+  m_loopType: 2
   m_useEase: 0
-  m_easeType: 0
+  m_easeType: 14
   m_alpha: 0

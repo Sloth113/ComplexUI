@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c95fdc7aa792154293f24ae302e18de, type: 3}
   m_Name: RotationDefault
   m_EditorClassIdentifier: 
-  m_type: 0
-  m_name: Tween
+  m_type: 4
+  m_name: RotationToZero
   m_amount: {x: 0, y: 0, z: 0}
   m_time: 1
   m_delay: 0

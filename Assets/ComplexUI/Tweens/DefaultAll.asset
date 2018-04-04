@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ee1e5b9510bfc408ff6e7e62ba04cc, type: 3}
   m_Name: DefaultAll
   m_EditorClassIdentifier: 
-  m_tweens: []
+  m_tweens:
+  - {fileID: 11400000}
   m_delayBetween: 0
