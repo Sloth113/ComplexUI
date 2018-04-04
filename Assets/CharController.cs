@@ -26,6 +26,11 @@ public class CharController : MonoBehaviour {
             if (changeEvent != null)
                 // HealthChange(-1);
                 changeEvent.Invoke(-1);
+            List<CUI.Tween> l = CUI.TweensManager.Instance.GetTweens();
+            foreach(CUI.Tween t in l)
+            {
+                t.Apply(this.gameObject);
+            }
             
         }
         if (Input.GetKeyDown(KeyCode.X))

@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 261880782}
   - component: {fileID: 261880781}
   - component: {fileID: 261880780}
+  - component: {fileID: 261880786}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -545,6 +546,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &261880786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 261880779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e540d949144cd4f4aaf93e001f3468ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tween: {fileID: 11400000, guid: c5849fe13b728844f8e8cd53210863f9, type: 2}
+  m_nextUpdate: 0
+  m_onStart: 0
+  m_destroyOnPlay: 0
+  m_event:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &354101765
 GameObject:
   m_ObjectHideFlags: 0
