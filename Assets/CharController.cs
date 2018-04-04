@@ -8,7 +8,7 @@ public class myEvent : UnityEvent<int> { };
 public class CharController : MonoBehaviour {
     public delegate void VarChange(int amt);
     //public event VarChange HealthChange;
-    public static event VarChange HealthChange;
+   // public static event VarChange HealthChange;
     public myEvent changeEvent;
     public myEvent attackChange;
    // public UnityEvent change2;

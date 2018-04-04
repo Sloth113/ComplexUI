@@ -4,7 +4,7 @@ using UnityEngine;
 
 //Currently test class to apply tween per timer
 public class ApplyTweens : MonoBehaviour {
-    [SerializeField] Tween[] m_tweens;
+    [SerializeField] CUI.Tween[] m_tweens;
     [SerializeField] float m_time;
     private float m_timer;
     private int m_index;

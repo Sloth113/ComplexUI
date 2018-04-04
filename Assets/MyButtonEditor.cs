@@ -4,25 +4,28 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-[CustomEditor(typeof(MyButton),true)]
-public class MyButtonEditor : UnityEditor.UI.ButtonEditor {
-    public override void OnInspectorGUI()
-    {        
-        MyButton button = (MyButton)target;
-        //DrawDefaultInspector();
-        base.OnInspectorGUI();
+namespace CUI
+{
+    [CustomEditor(typeof(MyButton), true)]
+    public class MyButtonEditor : UnityEditor.UI.ButtonEditor
+    {
+        public override void OnInspectorGUI()
+        {
+            MyButton button = (MyButton)target;
+            //DrawDefaultInspector();
+            base.OnInspectorGUI();
 
-        serializedObject.Update();
+            serializedObject.Update();
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_overTweens"), EditorStyles.standardFont);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_exitTweens"), EditorStyles.standardFont);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_downTweens"), EditorStyles.standardFont);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_upTweens"), EditorStyles.standardFont);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_enabledTweens"), EditorStyles.standardFont);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("m_disabledTweens"), EditorStyles.standardFont);
-        //Event tweens?
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_onOver"), EditorStyles.standardFont);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_onExit"), EditorStyles.standardFont);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_onDown"), EditorStyles.standardFont);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_onUp"), EditorStyles.standardFont);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_onEnabled"), EditorStyles.standardFont);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_onDisabled"), EditorStyles.standardFont);
 
-        serializedObject.ApplyModifiedProperties();
+            serializedObject.ApplyModifiedProperties();
+        }
+
     }
-
 }

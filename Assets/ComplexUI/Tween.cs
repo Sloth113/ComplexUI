@@ -4,10 +4,20 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-[System.Serializable]
-public abstract class Tween : ScriptableObject {
+namespace CUI
+{
+    [System.Serializable]
+    public abstract class Tween : ScriptableObject
+    {
+        public abstract void Apply(GameObject obj);
+        public abstract void Apply(GameObject obj, float delay);
 
-    public abstract void Apply(GameObject obj);
-
-
+        public abstract float GetDelay();
+        public abstract float GetTime();
+        public float GetDuration()
+        {
+            return GetDelay() + GetTime();
+        }
+        
+    }
 }

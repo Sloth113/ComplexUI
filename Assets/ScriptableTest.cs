@@ -8,8 +8,8 @@ public class ScriptableTest : ScriptableObject {
 
     public float m_speed;
     public float m_time;
-    private MyButton m_button;
-    public MyButton button
+    private CUI.MyButton m_button;
+    public CUI.MyButton button
     {
         set
         {
