@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: DefaultAll
   m_EditorClassIdentifier: 
   m_tweens:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 9dff7136da6b12c4f9cc77d131d5fe48, type: 2}
+  - {fileID: 11400000, guid: ec8c6bcb2316c7e47ab0178b3ebf3e10, type: 2}
+  - {fileID: 11400000, guid: 0860fd81fe0e32f42b236be65fa8d4c7, type: 2}
   m_delayBetween: 0

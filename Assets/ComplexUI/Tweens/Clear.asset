@@ -14,7 +14,7 @@ MonoBehaviour:
   m_type: 10
   m_name: Tween
   m_amount: {x: 0, y: 0, z: 0}
-  m_time: 1
+  m_time: 0
   m_delay: 0
   m_local: 1
   m_space: 1

@@ -13,6 +13,7 @@ public class CharController : MonoBehaviour {
     public myEvent attackChange;
    // public UnityEvent change2;
     [SerializeField] private int hp;
+    public CUI.CUIButton button;
 	// Use this for initialization
 	void Start () {
 		
@@ -26,11 +27,14 @@ public class CharController : MonoBehaviour {
             if (changeEvent != null)
                 // HealthChange(-1);
                 changeEvent.Invoke(-1);
+            /* //Tween loader
             List<CUI.Tween> l = CUI.TweensManager.Instance.GetTweens();
             foreach(CUI.Tween t in l)
             {
                 t.Apply(this.gameObject);
             }
+            */
+            button.Disable();
             
         }
         if (Input.GetKeyDown(KeyCode.X))
@@ -38,6 +42,7 @@ public class CharController : MonoBehaviour {
             hp++;
             if (changeEvent != null)
                 changeEvent.Invoke(1);
+            button.Enable();
         }
 	}
 }

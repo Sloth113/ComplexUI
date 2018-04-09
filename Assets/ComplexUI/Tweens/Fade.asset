@@ -15,7 +15,7 @@ MonoBehaviour:
   m_name: Fade
   m_amount: {x: 0, y: 0, z: 0}
   m_time: 1
-  m_delay: 2
+  m_delay: 0
   m_local: 1
   m_space: 1
   m_loopType: 0
