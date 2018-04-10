@@ -150,7 +150,7 @@ namespace CUI
                     iTween.ShakeRotation(obj, iTween.Hash("name", m_name, "amount", m_amount, "space", m_space, "time", m_time, "delay", m_delay + delay, "looptype", m_loopType));
                     break;
                 case Type.ShakePos:
-                    iTween.ShakePosition(obj, iTween.Hash("name", m_name, "amount", m_amount, "islocal", false, "time", m_time, "delay", m_delay + delay, "looptype", m_loopType));
+                    iTween.ShakePosition(obj, iTween.Hash("name", m_name, "amount", m_amount, "islocal", m_local, "time", m_time, "delay", m_delay + delay, "looptype", m_loopType));
                     break;
                 case Type.ShakeScale:
                     iTween.ShakeScale(obj, iTween.Hash("name", m_name, "amount", m_amount, "time", m_time, "delay", m_delay + delay, "looptype", m_loopType));

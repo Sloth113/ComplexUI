@@ -14,7 +14,7 @@ MonoBehaviour:
   m_type: 3
   m_name: ScaleToOne
   m_amount: {x: 1, y: 1, z: 1}
-  m_time: 0.5
+  m_time: 0.1
   m_delay: 0
   m_local: 1
   m_space: 1

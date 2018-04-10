@@ -18,6 +18,7 @@ namespace CUI
             if (m_onStart)
             {
                 PlayTween();
+                
             }
         }
 

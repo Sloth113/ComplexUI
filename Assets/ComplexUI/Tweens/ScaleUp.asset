@@ -16,7 +16,7 @@ MonoBehaviour:
   m_amount: {x: 1.2, y: 1.2, z: 1.2}
   m_time: 0.5
   m_delay: 0
-  m_local: 1
+  m_local: 0
   m_space: 1
   m_loopType: 0
   m_useEase: 0

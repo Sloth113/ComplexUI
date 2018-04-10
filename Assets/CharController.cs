@@ -10,6 +10,7 @@ public class CharController : MonoBehaviour {
     //public event VarChange HealthChange;
    // public static event VarChange HealthChange;
     public myEvent changeEvent;
+    UnityEngine.Events.UnityEvent anotherEvent;
     public myEvent attackChange;
    // public UnityEvent change2;
     [SerializeField] private int hp;

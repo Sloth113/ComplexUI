@@ -7,17 +7,18 @@ using UnityEngine.EventSystems;
 
 namespace CUI
 {
+    [System.Serializable]
+    public struct StateActions
+    {
+        public Tween[] m_tweens;
+        public float m_delay;//Tweens get delay for each position in the list, first 0 delay, 2nd 1xdelay, 3rd 2xdelay.. 
+        public bool m_squence; //Play tweens in a sequence., first 0 delay, 2nd 1xdelay+previous delay, 3rd 2xdelay + all previous delay. 
+        public UnityEvent m_event; //fire off event when done
+    }
     //Extends Unity's button to be able to apply tweens on actions
     public class CUIButton : Button
     {
-        [System.Serializable]
-        public struct StateActions
-        {
-            public Tween[] m_tweens;
-            public float m_delay;//Tweens get delay for each position in the list, first 0 delay, 2nd 1xdelay, 3rd 2xdelay.. 
-            public bool m_squence; //Play tweens in a sequence., first 0 delay, 2nd 1xdelay+previous delay, 3rd 2xdelay + all previous delay. 
-            public UnityEvent m_event; //fire off event when done
-        }
+
 
         public StateActions m_onOver;
         public StateActions m_onExit;
