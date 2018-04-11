@@ -15,6 +15,7 @@ namespace CUI
         public bool m_squence; //Play tweens in a sequence., first 0 delay, 2nd 1xdelay+previous delay, 3rd 2xdelay + all previous delay. 
         public UnityEvent m_event; //fire off event when done
     }
+   // [RequireComponent(typeof(CanvasGroup))]
     //Extends Unity's button to be able to apply tweens on actions
     public class CUIButton : Button
     {
@@ -28,7 +29,10 @@ namespace CUI
         public StateActions m_onDisabled;
 
         private bool m_enabled;
-
+        protected override void Awake()
+        {
+            m_enabled = enabled;
+        }
         //On Over
         public override void OnPointerEnter(PointerEventData eventData)
         {

@@ -25,6 +25,7 @@ namespace CUI
         {
             m_value += value;
             PlayAction(m_change);
+            m_text.text = m_value.ToString(m_format);
         }
         //Play actions on change.. 
         private float PlayAction(StateActions action)
