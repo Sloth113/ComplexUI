@@ -20,10 +20,17 @@ namespace CUI
             m_text = GetComponent<Text>();
             m_text.text = m_value.ToString(m_format);
         }
-
-        public void ChangeValue(float value)
+        //Change by amount
+        public void ChangeValue(float amount)
         {
-            m_value += value;
+            m_value += amount;
+            PlayAction(m_change);
+            m_text.text = m_value.ToString(m_format);
+        }
+
+        public void SetValue(float value)
+        {
+            m_value = value;
             PlayAction(m_change);
             m_text.text = m_value.ToString(m_format);
         }

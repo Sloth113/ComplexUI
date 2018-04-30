@@ -109,6 +109,7 @@ namespace CUI
                 delay += action.m_delay + (action.m_squence ? t.GetDuration() : 0);
             }
             action.m_event.Invoke();
+            
             return delay;
         }
 
