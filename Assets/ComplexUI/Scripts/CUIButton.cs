@@ -7,20 +7,11 @@ using UnityEngine.EventSystems;
 
 namespace CUI
 {
-    [System.Serializable]
-    public struct StateActions
-    {
-        public Tween[] m_tweens;
-        public float m_delay;//Tweens get delay for each position in the list, first 0 delay, 2nd 1xdelay, 3rd 2xdelay.. 
-        public bool m_squence; //Play tweens in a sequence., first 0 delay, 2nd 1xdelay+previous delay, 3rd 2xdelay + all previous delay. 
-        public UnityEvent m_event; //fire off event when done
-    }
-   // [RequireComponent(typeof(CanvasGroup))]
+   
+    // [RequireComponent(typeof(CanvasGroup))]
     //Extends Unity's button to be able to apply tweens on actions
-    public class CUIButton : Button
+    public class CUIButton : Button, ICUIElement
     {
-
-
         public StateActions m_onOver;
         public StateActions m_onExit;
         public StateActions m_onDown;
@@ -33,13 +24,24 @@ namespace CUI
         {
             m_enabled = enabled;
         }
+        //LOOK INTO
+        private void OnDisable()
+        {
+            m_enabled = false;
+            base.OnDisable();
+        }
+        private void OnEnable()
+        {
+            m_enabled = true;
+        }
         //On Over
         public override void OnPointerEnter(PointerEventData eventData)
         {
             if (m_enabled)
             {
                 base.OnPointerEnter(eventData);
-                PlayAction(m_onOver);
+                CUIFunctions.PlayAction(m_onOver, this.gameObject);
+                //PlayAction(m_onOver);
             }   
         }
 
@@ -49,7 +51,7 @@ namespace CUI
             if (m_enabled)
             {
                 base.OnPointerExit(eventData);
-                PlayAction(m_onExit);
+                CUIFunctions.PlayAction(m_onExit, this.gameObject); ;
             }
         }
 
@@ -59,7 +61,7 @@ namespace CUI
             if (m_enabled)
             {
                 base.OnPointerDown(eventData);
-                PlayAction(m_onDown);
+                CUIFunctions.PlayAction(m_onDown, this.gameObject);
             }
         }
         //On up
@@ -68,51 +70,48 @@ namespace CUI
             if (m_enabled)
             {
                 base.OnPointerUp(eventData);
-                PlayAction(m_onUp);
+                CUIFunctions.PlayAction(m_onUp, this.gameObject);
             }
         }
         //Enable
-        public void Enable()
+        public float Enable()
         {
             if (m_enabled == false)
             {
                 m_enabled = true;
                 gameObject.SetActive(true);
-                PlayAction(m_onEnabled);
+                return CUIFunctions.PlayAction(m_onEnabled, this.gameObject); 
             }
+            return 0;
         }
         
         //My disable function 
-        public void Disable()
+        public float Disable()
         {
             if (m_enabled)
             {
                 m_enabled = false;
                 //Use return value from play actions being called to start coroutine
-                StartCoroutine(DisableAfter(PlayAction(m_onDisabled)));
+                float time = CUIFunctions.PlayAction(m_onDisabled, this.gameObject);
+                StartCoroutine(CUIFunctions.DisableAfter(time,this.gameObject));
+                return time;
             }
-        }
-
-        private IEnumerator DisableAfter(float seconds)
-        {
-            yield return new WaitForSeconds(seconds);
-            gameObject.SetActive(false);
-        }
-
-        private float PlayAction(StateActions action)
-        {
-            float delay = 0;
-            foreach(Tween t in action.m_tweens)
-            {
-                if (t != null)
-                    t.Apply(this.gameObject, delay);
-                delay += action.m_delay + (action.m_squence ? t.GetDuration() : 0);
-            }
-            action.m_event.Invoke();
-            
-            return delay;
+            return 0;
         }
 
 
+        //private float PlayAction(StateActions action)
+        //{
+        //    float delay = 0;
+        //    foreach (Tween t in action.m_tweens)
+        //    {
+        //        if (t != null)
+        //            t.Apply(this.gameObject, delay);
+        //        delay += action.m_delay + (action.m_squence ? t.GetDuration() : 0);
+        //    }
+        //    action.m_event.Invoke();
+
+        //    return delay;
+        //}
     }
 }

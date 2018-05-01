@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour {
 
 
     //Change to CUI canvas
-    [SerializeField] private Canvas m_menuCanvas;
-    [SerializeField] private Canvas m_gameCanvas;
+    [SerializeField] private CUI.CUICanvas m_menuCanvas;
+    [SerializeField] private CUI.CUICanvas m_gameCanvas;
     //
     [SerializeField] private CUI.CUINumber m_foodUI;
     [SerializeField] private CUI.CUINumber m_goldUI;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour {
 
 
 
-
+    private bool m_changing = false;
 
 
     private void Awake()
@@ -83,10 +83,11 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         m_currentState = State.Game;
-        m_gameCanvas.enabled = true;
-        m_menuCanvas.enabled = false;
+        m_gameCanvas.Enable();
+        m_menuCanvas.Disable();
+        
 
-        UpdateUI();
+        //UpdateUI();
     }
 	
 	// Update is called once per frame
@@ -115,6 +116,8 @@ public class GameManager : MonoBehaviour {
                     {
                         Pause();
                     }
+
+                    UpdateUI();
                 }
                 break;
             case State.Menu:
@@ -182,18 +185,35 @@ public class GameManager : MonoBehaviour {
 
     public void Pause(bool pause)
     {
-        if (pause)
+        if (!m_changing)
         {
-            m_menuCanvas.enabled = true;//CUI menucanvas.Enable();
-            m_gameCanvas.enabled = false; //CUI gameCanvas.Disable();
-            m_currentState = State.Menu;
+            if (pause)
+            {
+                //m_menuCanvas.enabled = true;//CUI menucanvas.Enable();
+                //m_gameCanvas.enabled = false; //CUI gameCanvas.Disable();
+
+                StartCoroutine(CallFunctionAfter(m_gameCanvas.Disable(), m_menuCanvas.Enable));
+                m_currentState = State.Menu;
+            }
+            else
+            {
+                //m_menuCanvas.enabled = false;//CUI menucanvas.Enable();
+                //m_gameCanvas.enabled = true; //CUI gameCanvas.Disable();
+
+                StartCoroutine(CallFunctionAfter(m_menuCanvas.Disable(), m_gameCanvas.Enable));
+                m_currentState = State.Game;
+            }
         }
-        else
-        {
-            m_menuCanvas.enabled = false;//CUI menucanvas.Enable();
-            m_gameCanvas.enabled = true; //CUI gameCanvas.Disable();
-            m_currentState = State.Game;
-        }
+    }
+
+    public delegate float Function();
+
+    IEnumerator CallFunctionAfter(float time, Function fun)
+    {
+        m_changing = true;
+        yield return new WaitForSeconds(time);
+        fun();
+        m_changing = false;
     }
 
     public void UnPause()

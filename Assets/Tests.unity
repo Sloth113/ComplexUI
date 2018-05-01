@@ -4866,6 +4866,11 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1136501910 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1944875705655664, guid: e4b28ee71a295d34894949b731fc4549,
+    type: 2}
+  m_PrefabInternal: {fileID: 1816676259}
 --- !u!1 &1149429560
 GameObject:
   m_ObjectHideFlags: 0
@@ -6126,6 +6131,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1165416384}
     m_Modifications:
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_event.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224659906110865190, guid: e4b28ee71a295d34894949b731fc4549,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -6216,6 +6226,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_event.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1136501910}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_IsPrefabParent: 0
