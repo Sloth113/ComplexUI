@@ -24,14 +24,15 @@ namespace CUI
         {
             m_enabled = enabled;
         }
-        //LOOK INTO
-        private void OnDisable()
+
+        protected override void OnDisable()
         {
             m_enabled = false;
             base.OnDisable();
         }
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             m_enabled = true;
         }
         //On Over

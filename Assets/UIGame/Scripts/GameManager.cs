@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
     //
     [SerializeField] private CUI.CUINumber m_foodUI;
     [SerializeField] private CUI.CUINumber m_goldUI;
-    [SerializeField] private Image m_xpUI;//CUI.CUIImage m_xpUI;
+    [SerializeField] private CUI.CUIFillImage m_xpUI;//CUI.CUIImage m_xpUI;
     [SerializeField] private CUI.CUINumber m_levelUI;
     [SerializeField] private CUI.CUINumber m_currentXPUI;
     [SerializeField] private CUI.CUINumber m_nextLevelXPUI;
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour {
     {
         m_foodUI.SetValue(m_items[(int)Items.Food].amt);
         m_goldUI.SetValue(m_items[(int)Items.Gold].amt);
-        m_xpUI.fillAmount = m_items[(int)Items.XP].amt / (float)m_xpToNextLevel;
+        m_xpUI.SetValue(m_items[(int)Items.XP].amt / (float)m_xpToNextLevel);
         m_currentXPUI.SetValue(m_items[(int)Items.XP].amt);
         m_nextLevelXPUI.SetValue(m_xpToNextLevel);
         m_levelUI.SetValue(m_level);

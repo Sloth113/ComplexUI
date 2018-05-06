@@ -38,8 +38,6 @@ namespace CUI
 
         public float Disable()
         {
-            Debug.Log(m_enabled + this.name);
-            Debug.Log(childrenElements.Length + this.name);
             if (m_enabled)
             {
                 m_enabled = false;
@@ -51,7 +49,6 @@ namespace CUI
                     if (time < duration)
                         time = duration;
                 }
-                Debug.Log(time +this.name);
                 StartCoroutine(CUIFunctions.DisableAfter(time, this.gameObject));
                 return time;
             }
