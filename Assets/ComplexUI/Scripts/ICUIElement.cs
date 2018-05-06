@@ -27,12 +27,26 @@ namespace CUI
         public static float PlayAction(StateActions action, GameObject gameObject)
         {
             float duration = 0;
+            float delay = 0;
+            
             foreach (Tween t in action.m_tweens)
-            { 
-                if (t != null)
+            {
+                if (action.m_squence)
                 {
-                    t.Apply(gameObject, duration);
-                    duration += t.GetDuration();
+                    if (t != null)
+                    {
+                        t.Apply(gameObject, duration + delay);
+                        duration += t.GetDuration();
+                    }
+                }
+                else
+                {
+                    t.Apply(gameObject, delay);
+
+                    if (t.GetDuration() + delay > duration)
+                        duration = t.GetDuration() + delay;
+
+                    delay += delay;
                 }
             }
             action.m_event.Invoke();

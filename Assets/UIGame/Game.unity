@@ -1800,6 +1800,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 01af62f94ac935542be58f750396917e,
         type: 2}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_squence
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_IsPrefabParent: 0
@@ -1909,8 +1914,7 @@ MonoBehaviour:
   m_lerpTime: 1
   m_targetValue: 0
   m_onEnabled:
-    m_tweens:
-    - {fileID: 11400000, guid: 9dff7136da6b12c4f9cc77d131d5fe48, type: 2}
+    m_tweens: []
     m_delay: 0
     m_squence: 0
     m_event:
@@ -1919,8 +1923,7 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   m_onDisabled:
-    m_tweens:
-    - {fileID: 11400000, guid: 01af62f94ac935542be58f750396917e, type: 2}
+    m_tweens: []
     m_delay: 0
     m_squence: 0
     m_event:
@@ -2552,7 +2555,12 @@ Prefab:
     - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
         type: 2}
       propertyPath: m_onEnabled.m_tweens.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_tweens.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
         type: 2}
@@ -2691,6 +2699,12 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 42db06dd86fc53949b118b2b9d6ca9f2,
         type: 2}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_tweens.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 01af62f94ac935542be58f750396917e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_IsPrefabParent: 0
@@ -2825,6 +2839,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 596196371}
     m_Modifications:
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onEnabled.m_tweens.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_tweens.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2971,6 +2995,18 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2071020365}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onDisabled.m_tweens.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 01af62f94ac935542be58f750396917e,
+        type: 2}
+    - target: {fileID: 114865665556840988, guid: e4b28ee71a295d34894949b731fc4549,
+        type: 2}
+      propertyPath: m_onEnabled.m_tweens.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 42db06dd86fc53949b118b2b9d6ca9f2,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_IsPrefabParent: 0
