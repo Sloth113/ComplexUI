@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_item: 1
   m_amount: 1
+  m_effectSpawn: 1

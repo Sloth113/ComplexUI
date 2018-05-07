@@ -21,7 +21,7 @@ namespace CUI
         // Use this for initialization
         void Start()
         {
-            /*if (m_cameraPlane == null)
+            if (m_cameraPlane == null)
             {
                 //See if camera already has one
                 m_cameraPlane = Camera.main.gameObject.GetComponentInChildren<RectTransform>();
@@ -31,7 +31,7 @@ namespace CUI
                     m_cameraPlane = Instantiate<GameObject>(m_worldCanvas, Camera.main.transform).GetComponent<RectTransform>();
                 }
             }
-            */
+            
             m_startPos = transform.position;            
             //RectTransformUtility.ScreenPointToWorldPointInRectangle(canvRect, (Vector2)canvRect.position, Camera.main, out m_targetPos);
             RectTransformUtility.ScreenPointToWorldPointInRectangle(m_cameraPlane, (Vector2)m_UITargetRect.position, Camera.main, out m_targetPos);
@@ -41,6 +41,7 @@ namespace CUI
         // Update is called once per frame
         void Update()
         {
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(m_cameraPlane, (Vector2)m_UITargetRect.position, Camera.main, out m_targetPos);
             transform.position = Vector3.Lerp(m_startPos, m_targetPos, m_timer / m_lerpTime);
             m_timer += Time.deltaTime;
             if (transform.position == m_targetPos)
@@ -52,6 +53,8 @@ namespace CUI
             m_onHit.Invoke();
             Destroy(gameObject);
         }
+
+
         
     }
 }

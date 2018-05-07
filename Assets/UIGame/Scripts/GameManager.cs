@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Xml.Linq;
 
 public enum Items
 {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour {
         Menu,
         Game
     }
+
 
     private static GameManager m_instance = null;
     public static GameManager Instance
@@ -62,6 +64,11 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private CUI.CUINumber m_currentXPUI;
     [SerializeField] private CUI.CUINumber m_nextLevelXPUI;
 
+    [SerializeField] private GameObject m_xPEffect;
+    [SerializeField] private GameObject m_foodEffect;
+    [SerializeField] private GameObject m_coinEffect;
+    
+
 
 
     private bool m_changing = false;
@@ -78,16 +85,18 @@ public class GameManager : MonoBehaviour {
             m_items[i].item = thing++;
             m_items[i].amt = 0;
         }
-
+        
     }
     // Use this for initialization
-    void Start () {
+    void Start () { 
         m_currentState = State.Game;
         m_gameCanvas.Enable();
         m_menuCanvas.Disable();
-        
 
-        //UpdateUI();
+        //If save data 
+        Load();
+
+        UpdateUI();
     }
 	
 	// Update is called once per frame
@@ -117,12 +126,15 @@ public class GameManager : MonoBehaviour {
                         Pause();
                     }
 
-                    UpdateUI();
+                    //UpdateUI();
                 }
                 break;
             case State.Menu:
                 {
-                    
+                    if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+                    {
+                        UnPause();
+                    }
                 }
                 break;
         }
@@ -140,7 +152,23 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        UpdateUI();
+        //UpdateUI();
+    }
+
+    public GameObject GetEffect(Items item)
+    {
+        switch (item)
+        {
+            case Items.XP:
+                return m_xPEffect;
+            case Items.Gold:
+                return m_coinEffect;
+            case Items.Food:
+                return m_foodEffect;
+            case Items.COUNT:
+                return null;
+        }
+        return null;
     }
 
     public void LevelUp()
@@ -156,24 +184,51 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateUI()
     {
+        m_xpUI.SetMax(m_xpToNextLevel);
         m_foodUI.SetValue(m_items[(int)Items.Food].amt);
         m_goldUI.SetValue(m_items[(int)Items.Gold].amt);
-        m_xpUI.SetValue(m_items[(int)Items.XP].amt / (float)m_xpToNextLevel);
+        m_xpUI.SetValue(m_items[(int)Items.XP].amt);
         m_currentXPUI.SetValue(m_items[(int)Items.XP].amt);
         m_nextLevelXPUI.SetValue(m_xpToNextLevel);
         m_levelUI.SetValue(m_level);
     }
 
     #region Save&Load
-    //TODO
+    
     public void Save()
     {
-        Debug.Log("Save a thing..");
+        XDocument document = new XDocument();
+        XElement root = new XElement("PlayerInv");
+        
+        //Save date
+            
+        foreach (ItemDetail item in m_items)
+        {
+            root.SetAttributeValue(item.item.ToString(), item.amt);
+        }
+        
+        
+        document.Add(root);
+        document.Save("savegame.xml");
     }
 
     public void Load()
     {
-        Debug.Log("Load a thing!"); UpdateUI();
+
+        XElement root = XElement.Load("savegame.xml");
+        if (root != null)
+        {
+            //load should do more checks
+            for (int i = 0; i < m_items.Length; i++)
+            {
+                m_items[i].amt = int.Parse(root.Attribute(m_items[i].item.ToString()).Value);
+            }
+        }
+        else
+        {
+            //Make file?
+        }
+        UpdateUI();
     }
     #endregion
 
@@ -220,7 +275,13 @@ public class GameManager : MonoBehaviour {
     {
         Pause(false);
     }
-#endregion
+
+    public void Quit()
+    {
+        Save();
+        Application.Quit();
+    }
+    #endregion
 
     #region StatGetterSetters
     public ItemDetail GetXP()

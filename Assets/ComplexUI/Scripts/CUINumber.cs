@@ -18,11 +18,15 @@ namespace CUI
         [SerializeField] StateActions m_onDisabled;
 
         private bool m_enabled;
-        // Use this for initialization
-        void Start()
+
+        private void Awake()
         {
             m_text = GetComponentInChildren<Text>();
             m_text.text = m_value.ToString(m_format);
+        }
+        void Start()
+        {
+           
         }
         //
         private void OnDisable()

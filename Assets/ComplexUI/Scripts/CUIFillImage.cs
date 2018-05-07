@@ -165,6 +165,16 @@ namespace CUI
             return 0;
         }
 
+        public void SetMin(float min)
+        {
+            m_minValue = min;
+        }
+
+        public void SetMax(float max)
+        {
+            m_maxValue = max;
+        }
+
     }
 
 }

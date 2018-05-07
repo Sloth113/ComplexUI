@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_item: 2
   m_amount: 1
+  m_effectSpawn: 1
 --- !u!114 &114678120315959608
 MonoBehaviour:
   m_ObjectHideFlags: 1
