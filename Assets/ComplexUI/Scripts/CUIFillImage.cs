@@ -99,7 +99,19 @@ namespace CUI
 
         public void ChangeBy(float amount)
         {
-           
+            if (amount != 0)
+            {
+                m_lerpTimer = 0;
+                if (amount > 0)
+                {
+                    CUIFunctions.PlayAction(m_onIncrease, this.gameObject);
+                }
+                else
+                {
+                    CUIFunctions.PlayAction(m_onDecrease, this.gameObject);
+                }
+                m_targetValue += amount;
+            }
         }
 
         public void SetValue(float value)
@@ -109,11 +121,11 @@ namespace CUI
                 m_lerpTimer = 0;
                 if(value > m_targetValue)
                 {
-                    //increment
+                   CUIFunctions.PlayAction(m_onIncrease, this.gameObject);   
                 }
                 else
                 {
-                    //Decrement
+                    CUIFunctions.PlayAction(m_onDecrease, this.gameObject);
                 }
                 m_targetValue = value;
             }
