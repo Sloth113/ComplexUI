@@ -53,8 +53,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224882061507101884}
-  - component: {fileID: 114303742627720780}
   - component: {fileID: 225415170477373528}
+  - component: {fileID: 114303742627720780}
   m_Layer: 5
   m_Name: NumberUI
   m_TagString: Untagged

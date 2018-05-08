@@ -20,7 +20,8 @@ namespace CUI
         public StateActions m_onDisabled;
 
         private bool m_enabled;
-        protected override void Awake()
+        private bool m_wasEnabled;
+        protected override void Start()
         {
             m_enabled = enabled;
         }
@@ -100,6 +101,10 @@ namespace CUI
             return 0;
         }
 
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
 
         //private float PlayAction(StateActions action)
         //{

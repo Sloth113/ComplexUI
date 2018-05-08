@@ -17,13 +17,14 @@ namespace CUI
     {
         float Enable();//When you want to enable (call this)
         float Disable();//When you want to diabled (call this)
-        
+        GameObject GetGameObject();
     }
 
     
 
     public static class CUIFunctions
     {
+        //Play a set on an object
         public static float PlayAction(StateActions action, GameObject gameObject)
         {
             float duration = 0;
@@ -59,7 +60,7 @@ namespace CUI
             tween.Apply(gameObject);
             return tween.GetDuration();
         }
-
+        //coroutine function
         public static IEnumerator DisableAfter(float seconds, GameObject gameObject)
         {
             yield return new WaitForSeconds(seconds);

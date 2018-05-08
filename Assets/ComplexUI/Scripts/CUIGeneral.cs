@@ -42,5 +42,9 @@ namespace CUI
             }
             return 0;
         }
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
     }
 }
