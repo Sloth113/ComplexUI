@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CUI
 {
-    public class UIFade : MonoBehaviour
+    public class UIFade : MonoBehaviour, ICustomTween
     {
         [SerializeField]
         private float m_targetAlpha;
@@ -17,6 +17,12 @@ namespace CUI
 
         private CanvasRenderer m_canvasRenderer;
         private CanvasGroup m_canvasGroup;
+
+        public void Clear()
+        {
+            Destroy(this);
+        }
+
         public void setData(float targetAlpha, float time, float delay)
         {
             m_targetAlpha = targetAlpha;

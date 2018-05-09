@@ -9,7 +9,7 @@ namespace CUI
     {
 
         private bool m_enabled;
-        private Canvas m_canvas;
+        //private Canvas m_canvas;
 
         [SerializeField] private StateActions m_action;
 
@@ -18,7 +18,7 @@ namespace CUI
         // Use this for initialization
         void Start()
         {
-            m_canvas = GetComponent<Canvas>();
+            //m_canvas = GetComponent<Canvas>();
             m_enabled = enabled;
 
             

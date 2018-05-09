@@ -65,7 +65,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private CUI.CUINumber m_levelUI;
     [SerializeField] private CUI.CUINumber m_currentXPUI;
     [SerializeField] private CUI.CUINumber m_nextLevelXPUI;
+
     [SerializeField] private CUI.CUIButton m_levelUpButton;
+    [SerializeField] private CUI.CUIButton m_loadButton;
+    [SerializeField] private CUI.CUIButton m_clearButton;
 
     [Header("Click effects")]
     [SerializeField] private GameObject m_xPEffect;
@@ -215,6 +218,8 @@ public class GameManager : MonoBehaviour {
         m_nextLevelXPUI.SetValue(m_xpToNextLevel);
         m_levelUI.SetValue(m_level);
         CheckXP();
+        
+        
     }
 
     #region Save&Load
@@ -231,9 +236,9 @@ public class GameManager : MonoBehaviour {
             root.SetAttributeValue(item.item.ToString(), item.amt);
         }
         
-        
         document.Add(root);
         document.Save("savegame.xml");
+        
     }
 
     public void Load()
@@ -248,7 +253,6 @@ public class GameManager : MonoBehaviour {
                     m_items[i].amt = int.Parse(root.Attribute(m_items[i].item.ToString()).Value);
                 }
                 m_level = int.Parse(root.Attribute("Level").Value);
-                
         }
         else
         {
@@ -261,6 +265,7 @@ public class GameManager : MonoBehaviour {
     {
         File.Delete("savegame.xml");
     }
+    
     #endregion
 
     #region States
@@ -280,6 +285,7 @@ public class GameManager : MonoBehaviour {
 
                 StartCoroutine(CallFunctionAfter(m_gameCanvas.Disable(), m_menuCanvas.Enable));
                 m_currentState = State.Menu;
+                
             }
             else
             {

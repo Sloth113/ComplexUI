@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FoodMoney : MonoBehaviour, IClickable {
     [SerializeField] private Transform m_spawnPoint;
@@ -9,10 +10,12 @@ public class FoodMoney : MonoBehaviour, IClickable {
     [SerializeField] private float m_timeBetween = 0.5f;
     private float m_timer;
     private int m_spawnCount;
+    private Text m_text;
 
     // Use this for initialization
     void Start () {
-		
+        m_text = GetComponentInChildren<Text>();
+        m_text.text = "" + m_cost + " Food = " + 1 + " Coin";
 	}
 	
 	// Update is called once per frame
@@ -28,11 +31,9 @@ public class FoodMoney : MonoBehaviour, IClickable {
     }
     public void Click(Vector3 loc)
     {
-
-        int count = GameManager.Instance.GetFood().amt;
+        int count = GameManager.Instance.GetFood().amt / m_cost;
         m_spawnCount += count;
-        GameManager.Instance.ChangeFood(-count);
-
+        GameManager.Instance.ChangeFood(- count * m_cost);
     }
 
 }

@@ -8,27 +8,42 @@ namespace CUI
     public class TweenAttach : MonoBehaviour
     {
         public Tween m_tween;
-        public bool m_nextUpdate;
+
         public bool m_onStart;
         public bool m_destroyOnPlay;
+        public bool m_disableOnPlay;
+        [Space]
+        public bool m_inUpdate;
+        public float m_playAfterTime;
+        public bool m_playOnce;
         public UnityEvent m_event;
+        private float m_timer;
         // Use this for initialization
         void Start()
         {
             if (m_onStart)
             {
                 PlayTween();
-                
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (m_nextUpdate)
+            if (m_inUpdate)
             {
-                PlayTween();
-                m_nextUpdate = false;
+                if (m_timer >= m_playAfterTime)
+                {
+                    PlayTween();
+                    if(m_playOnce)
+                        m_inUpdate = false;
+                    m_timer = 0;
+                }
+                else
+                {
+                    m_timer += Time.deltaTime;
+                }
+                
             }
         }
 
@@ -40,7 +55,18 @@ namespace CUI
                 m_event.Invoke();
                 if (m_destroyOnPlay)
                     Destroy(this);
+                if (m_disableOnPlay)
+                    Disable();
             }
+        }
+
+        public void Enable()
+        {
+            this.enabled = true;
+        }
+        public void Disable()
+        {
+            this.enabled = false;
         }
         //Also if they can to just apply one now
         public static void PlayTween(GameObject obj, Tween tween)
