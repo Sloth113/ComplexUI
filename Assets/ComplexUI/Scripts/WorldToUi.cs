@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 namespace CUI
 {
+    //Script attached to game world object that moves to a point on a plane (Cavnvas) that has relative position of a UI element 
+    //Used to have object go from world to UI
     public class WorldToUi : MonoBehaviour
     {
         public RectTransform m_UITargetRect;
@@ -18,7 +20,7 @@ namespace CUI
         private float m_timer = 0;
 
         [SerializeField] private UnityEvent m_onHit;
-        // Use this for initialization
+        // Get the planes set positon and set target
         void Start()
         {
             if (m_cameraPlane == null)
@@ -38,7 +40,7 @@ namespace CUI
 
         }
 
-        // Update is called once per frame
+        // Sets target and moves object towards it using a lerp from start to end
         void Update()
         {
             RectTransformUtility.ScreenPointToWorldPointInRectangle(m_cameraPlane, (Vector2)m_UITargetRect.position, Camera.main, out m_targetPos);
@@ -47,7 +49,7 @@ namespace CUI
             if (transform.position == m_targetPos)
                 Completed();
         }
-
+        //Once completed it triggers event and destroys itself
         private void Completed()
         {
             m_onHit.Invoke();

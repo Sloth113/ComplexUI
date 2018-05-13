@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 //Used for images that are used as fill images
+//Allows the user to set a min/max value that the bar will convert 
+//Also has a lerp to type effect
 namespace CUI
 {
     [RequireComponent(typeof(Image))]
@@ -39,7 +41,7 @@ namespace CUI
         }
 
         //lerp options
-        [SerializeField] private float m_lerpTime;
+        [SerializeField] private float m_lerpTime; //set to 0 to snap
         [SerializeField] private float m_targetValue;
         private float m_lerpTimer;
 
@@ -54,11 +56,23 @@ namespace CUI
         // Use this for initialization
         void Start()
         {
+            if(m_minValue > m_maxValue)
+            {
+                float tmp = m_minValue;
+                m_minValue = m_maxValue;
+                m_maxValue = tmp;
+                Debug.Log("Set values to correct");
+            }
+            if(m_minValue == m_maxValue)
+            {
+                m_maxValue++;
+                Debug.Log("Values can not be equal");
+            }
             m_image = GetComponent<Image>();
             m_image.fillAmount = (m_amount - m_minValue) / (m_maxValue - m_minValue);
         }
 
-        // Update is called once per frame
+        // Moves towards target over a set time. 
         void Update()
         {
             if (m_lerpTime > 0)
@@ -81,8 +95,7 @@ namespace CUI
             }
         }
 
-        //Seems to be causing frame issues
-        //Could be crappy laptop
+        //Coroutine way, not used
         IEnumerator LerpToOver(float value, float time)
         {
             
@@ -96,7 +109,7 @@ namespace CUI
                 }
                 
         }
-
+        //Change start value by amount 
         public void ChangeBy(float amount)
         {
             if (amount != 0)
@@ -113,7 +126,7 @@ namespace CUI
                 m_targetValue += amount;
             }
         }
-
+        //Set target value to amount
         public void SetValue(float value)
         {
             if(value != m_targetValue)
@@ -168,15 +181,28 @@ namespace CUI
         {
             return gameObject;
         }
-
+        //If a script was to set values
+        //These functions
         public void SetMin(float min)
         {
-            m_minValue = min;
+            if (min < m_maxValue)
+                m_minValue = min;
+            else
+            {
+                m_minValue = m_maxValue - 1;
+                Debug.Log("Min value set to 1 less than max, as it needs to be less than max");
+            }
         }
 
         public void SetMax(float max)
         {
-            m_maxValue = max;
+            if(max > m_minValue)
+                m_maxValue = max;
+            else
+            {
+                m_maxValue = m_minValue - 1;
+                Debug.Log("Max value set to 1 more than min, as it needs to be more than min");
+            }
         }
 
     }

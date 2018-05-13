@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Rotates the object attached to 
 public class AutoRotate : MonoBehaviour {
     [SerializeField]
     Vector3 m_dir;

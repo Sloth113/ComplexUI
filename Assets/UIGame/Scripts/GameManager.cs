@@ -18,15 +18,14 @@ public struct ItemDetail
     public Items item;
     public int amt;
 }
-
+//Game manager for test application 
 public class GameManager : MonoBehaviour {
     private enum State
     {
         Menu,
         Game
     }
-
-
+    
     private static GameManager m_instance = null;
     public static GameManager Instance
     {
@@ -80,7 +79,7 @@ public class GameManager : MonoBehaviour {
 
     private bool m_changing = false;
 
-
+    //Set xp xp and item array
     private void Awake()
     {
         m_xpPerLevel = m_xpToNextLevel;
@@ -95,7 +94,7 @@ public class GameManager : MonoBehaviour {
         }
         
     }
-    // Use this for initialization
+    // Set up state and load save
     void Start () { 
         m_currentState = State.Game;
         m_gameCanvas.Enable();
@@ -107,7 +106,8 @@ public class GameManager : MonoBehaviour {
         UpdateUI();
     }
 	
-	// Update is called once per frame
+	// Escape to switch state
+    //Or check if something was clicked on 
 	void Update () {
         switch (m_currentState)
         {
@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour {
         
 
     }
-
+    //Add item to array
     public void AddItem(ItemDetail thing)
     {
         for(int i = 0; i < m_items.Length; i++)
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour {
 
         //UpdateUI();
     }
-
+    //Check to see if button should be enabled
     private void CheckXP()
     {
         if(m_items[(int)Items.XP].amt >= m_xpToNextLevel)
@@ -179,6 +179,7 @@ public class GameManager : MonoBehaviour {
         }
 
     }
+    //Function to get effect for an item type
     public GameObject GetEffect(Items item)
     {
         switch (item)
@@ -194,7 +195,7 @@ public class GameManager : MonoBehaviour {
         }
         return null;
     }
-
+    //Change amount on level ui
     public void LevelUp()
     {
         if(m_items[(int)Items.XP].amt >= m_xpToNextLevel)
@@ -206,7 +207,7 @@ public class GameManager : MonoBehaviour {
         m_levelUpButton.Disable();
         UpdateUI();
     }
-
+    //Manual set of ui elements to make sure they are the right numbers
     public void UpdateUI()
     {
         m_xpToNextLevel =(m_level+1) * m_xpPerLevel;

@@ -9,7 +9,7 @@ public struct Drop
     public GameObject prefab;
     public float amount; //chance drops
 }
-
+//Used for wandering to random locations within a range
 [RequireComponent(typeof(CharacterController))]
 public class Wanderer : MonoBehaviour, IClickable, ISpawnable
 {
@@ -20,7 +20,7 @@ public class Wanderer : MonoBehaviour, IClickable, ISpawnable
 
     [SerializeField] List<Drop> m_drops;
 
-
+    //Get components
     private void Awake()
     {
         
@@ -29,12 +29,7 @@ public class Wanderer : MonoBehaviour, IClickable, ISpawnable
         m_dest = new Vector3(Random.Range(-4.0f, 4.0f), 1.25f, Random.Range(-4.0f, 4.0f));
         m_navAgent.destination = m_dest;
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
+    //Set location if at target
 	void Update () {
         if((transform.position - m_dest).sqrMagnitude < 0.5)
         {
@@ -42,7 +37,8 @@ public class Wanderer : MonoBehaviour, IClickable, ISpawnable
             m_navAgent.destination = m_dest;
         }
 	}
-
+    //If clicked spawn a thing
+    //Also change spawn count
     public void Click(Vector3 loc)
     {
         if(m_spawner != null)

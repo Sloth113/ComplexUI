@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.451432, g: 0.5007719, b: 0.5714963, a: 1}
+  m_IndirectSpecularColor: {r: 0.4514314, g: 0.50077087, b: 0.57149523, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3327,6 +3327,11 @@ Prefab:
       propertyPath: m_onDisabled.m_event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 225720315745625028, guid: e18473bb331735d42ab1a2c8181749a2,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e18473bb331735d42ab1a2c8181749a2, type: 2}
   m_IsPrefabParent: 0
@@ -3521,7 +3526,8 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 42db06dd86fc53949b118b2b9d6ca9f2,
         type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 225414969938043990, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1241145670
@@ -4663,6 +4669,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4b28ee71a295d34894949b731fc4549, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1691603938 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1944875705655664, guid: e4b28ee71a295d34894949b731fc4549,
+    type: 2}
+  m_PrefabInternal: {fileID: 1228777539}
+--- !u!225 &1691603939
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1691603938}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1838081579
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Clickable machine that takes food and outputs coins 
 public class FoodMoney : MonoBehaviour, IClickable {
     [SerializeField] private Transform m_spawnPoint;
     [SerializeField] private GameObject m_prefab;
@@ -29,6 +29,7 @@ public class FoodMoney : MonoBehaviour, IClickable {
         if (m_timer < m_timeBetween)
             m_timer += Time.deltaTime;
     }
+    //Click location takes the cost and outputs coins 
     public void Click(Vector3 loc)
     {
         int count = GameManager.Instance.GetFood().amt / m_cost;

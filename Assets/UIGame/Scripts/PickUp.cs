@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//item pick up script
 public class PickUp : MonoBehaviour, IClickable {
     [SerializeField] Items m_item;
     [SerializeField] int m_amount;

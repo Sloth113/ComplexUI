@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CUI
 {
+    //Used to clear ICustom tweens 
     public class ClearCustom : MonoBehaviour, ICustomTween
     {
         public void Clear()
@@ -16,7 +17,8 @@ namespace CUI
             ICustomTween[] myTweens = GetComponents<ICustomTween>();
             foreach(ICustomTween tween in myTweens)
             {
-                tween.Clear();
+                if(tween != this)
+                    tween.Clear();
             }
             Destroy(this);
         }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace CUI
 {
+    //Attach this to UI elements that you want to enable and disable with a CUI Canvas
+    //Implements the ICUI element interface
     public class CUIGeneral : MonoBehaviour, ICUIElement
     {
 
@@ -42,6 +44,7 @@ namespace CUI
             }
             return 0;
         }
+
         public GameObject GetGameObject()
         {
             return gameObject;

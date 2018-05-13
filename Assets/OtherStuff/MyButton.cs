@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEditor;
 
+//First iteraction of a custom button, class mostly used in testing 
+//Functionallity moved to CUI button class
 namespace CUI
 {
 

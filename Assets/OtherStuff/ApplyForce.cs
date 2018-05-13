@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Script to apply a force to an object when it is spawned in or aftwards using apply function
 public class ApplyForce : MonoBehaviour
 {
     [SerializeField] private Vector3 m_direction;
@@ -23,7 +24,7 @@ public class ApplyForce : MonoBehaviour
     {
 
     }
-
+    //Using rigid body apply force
     public void Apply()
     {
         if (m_rBody != null)

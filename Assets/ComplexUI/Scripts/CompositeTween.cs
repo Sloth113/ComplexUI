@@ -17,7 +17,9 @@ namespace CUI
         {
             Apply(obj, 0);
         }
-
+        //Applies the tweens to the object with a delay
+        //If sequence is selected extra delay is added so they play after the others dinish. 
+        //If there is a delay each time a tween is added the delay increases
         public override void Apply(GameObject obj, float delay)
         {
             float totalDelay = 0;
@@ -32,12 +34,12 @@ namespace CUI
                 }
             }
         }
-        //Different
+        //
         public override float GetDelay()
         {
             return m_delayBetween;
         }
-
+        //Calculates the time it will take for all these tweens to play with these settings 
         public override float GetTime()
         {
             float time = 0;

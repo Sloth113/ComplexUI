@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace CUI
 {
+    //Custom tween function to fade UI elements
+    //Uses a canvas group to fade any of Unitys UI 
+    [RequireComponent(typeof(CanvasGroup))]
     public class UIFade : MonoBehaviour, ICustomTween
     {
         [SerializeField]
@@ -17,12 +20,12 @@ namespace CUI
 
         private CanvasRenderer m_canvasRenderer;
         private CanvasGroup m_canvasGroup;
-
+        //Used to destroy active components 
         public void Clear()
         {
             Destroy(this);
         }
-
+        //Used to initlise data when set on an object
         public void setData(float targetAlpha, float time, float delay)
         {
             m_targetAlpha = targetAlpha;
@@ -33,16 +36,10 @@ namespace CUI
             m_currentAlpha = m_initalAlpha;
         }
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
+        // Fades to target over the set time
         void Update()
         {
-            //ADD DELAY
+            //If timer is over set the value to target and destroy self
             if (m_timer > (m_time + m_delay))
             {
                 //m_canvasRenderer.SetAlpha(m_targetAlpha);
@@ -56,7 +53,7 @@ namespace CUI
                 m_currentAlpha = Mathf.Lerp(m_initalAlpha, m_targetAlpha, (m_timer - m_delay) / (m_time));
                 m_canvasGroup.alpha = m_currentAlpha;
             }
-
+            //Timer
             m_timer += Time.deltaTime;
 
         }

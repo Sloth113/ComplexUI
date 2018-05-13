@@ -7,6 +7,7 @@ namespace CUI
 {
     //Currently does nothing. 
     //[CustomEditor(typeof(Tween), true)]
+    //Was going to be used for tweens
     public class TweenEditor : Editor
     {
 

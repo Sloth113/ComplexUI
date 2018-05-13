@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 namespace CUI
 {
+    //File includes global functions, structs and interface 
     [System.Serializable]
     public struct StateActions
     {
@@ -21,7 +22,7 @@ namespace CUI
     }
 
     
-
+    //Static class that can be used for certain functions such as playing tweens and disable after coroutine
     public static class CUIFunctions
     {
         //Play a set on an object

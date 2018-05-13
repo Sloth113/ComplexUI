@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
-
+//Base tween class for scriptable objects (ITweeninterface and composite tweens)
 namespace CUI
 {
     [System.Serializable]

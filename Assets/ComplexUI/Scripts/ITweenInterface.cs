@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace CUI
 {
-
+    
     public delegate void SetInfoDel(ITweenInterface tween);
-
+    //ITweenInterface is the scriptable object class, originally named due to only having iTween functions but is also used for custom tweens.
+    //To add a custom tween add it to the Type enum and to the swtich statement in apply. 
+    //The public variable are used in the tween apply function some are not used in certain tweens
     [CreateAssetMenu(fileName = "Tween", menuName = "ComplexUI/Tween/New Tween", order = 0)]
     public class ITweenInterface : Tween
     {
@@ -24,8 +28,10 @@ namespace CUI
             ScaleAdd,
             RotateAdd,
             MoveAdd,
-            FadeTo, //Alpha fade
-            ClearAll
+            FadeTo, //Alpha fade //Custom
+            ClearAll,
+            CustomClear
+
         }
         public Type m_type;
 
@@ -42,16 +48,23 @@ namespace CUI
 
 
         #region Menu&Creation
+
+#if UNITY_EDITOR
+
         public void CreateAsset()
         {
             CreateAsset("Tween", null);
         }
+        //Below is unimplented Asset menu creation for premade tweens. Instead many of these tween will be in the CUI tween folder
+        /*
         [ContextMenu("Something")]
         public void AddSomething()
         {
             m_time = -1.0f;
             AssetDatabase.Refresh();
         }
+        */
+        /*
         #region ShakeRotation
         [MenuItem("Assets/Create/ComplexUI/Tween/ShakeRotation")]
         public static void MakeShakeRot()
@@ -106,8 +119,7 @@ namespace CUI
             set.m_type = Type.ShakeScale;
         }
         #endregion
-
-
+        */
 
         public static void CreateAsset(string name, SetInfoDel preset)
         {
@@ -135,13 +147,15 @@ namespace CUI
             Selection.activeObject = asset;
 
         }
-        #endregion
-
+#endif
+#endregion
+        //To apply this tween to an object these functions are called
         public override void Apply(GameObject obj)
         {
             Apply(obj, 0);
         }
-
+        //Using data from class add tween to the object
+        //Delay is how long before this tween will be played, the tween is applied straight away and has the delay imbedded in the tween
         public override void Apply(GameObject obj, float delay)
         {
             switch (m_type)
@@ -179,11 +193,14 @@ namespace CUI
                 case Type.ClearAll:
                     iTween.Stop(obj);
                     break;
+                case Type.CustomClear:
+                    obj.AddComponent<ClearCustom>();
+                    break;
                 default:
                     break;
             }
         }
-
+        //Delay and time used when calculating the time to play tweens
         public override float GetDelay()
         {
             return m_delay;

@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace CUI
 {
-    
+    //CUI canvas gets all child tween elements
+    //Allows for global disable/enables of a canvas 
+    //Has an apply all to children function that applies an action to every child
     public class CUICanvas : MonoBehaviour, ICUIElement
     {
 
@@ -33,7 +35,7 @@ namespace CUI
             //m_prevStates = new bool[m_childrenElements.Count];
             //GetUI();
         }
-
+        //Add CUI elements to this excluding this
         private void GetUI()
         {
             ICUIElement[] elements = GetComponentsInChildren<ICUIElement>(true);
@@ -46,7 +48,7 @@ namespace CUI
                 }
             }
         }
-
+        //Grabs current stats of UI so if it is already diabled they stay that way when the canvas is enabled
         private void CheckStates()
         {
             //Uses a list to remember all that needs to be changed as can not change dictionary while iterating
@@ -61,6 +63,7 @@ namespace CUI
             }
             
         }
+        //Ensure the enabled variable is set
         private void OnDisable()
         {
             m_enabled = false;
@@ -69,7 +72,7 @@ namespace CUI
         {
             m_enabled = true;
         }
-
+        //Plays an action on every child using CUI functions static class
         public void ApplyActionToChildren()
         {
             foreach(KeyValuePair<ICUIElement, bool> el in m_childrenElements)
@@ -79,6 +82,7 @@ namespace CUI
             }
         }
 
+        //Disable, call disable on everything then disable self after everything is done
         public float Disable()
         {
             if (m_enabled)
@@ -99,7 +103,7 @@ namespace CUI
             }
             return 0;
         }
-
+        //Enable self then call enable on everything else
         public float Enable()
         {
             if (m_enabled == false)
@@ -118,7 +122,7 @@ namespace CUI
             }
             return 0;
         }
-
+        //
         public GameObject GetGameObject()
         {
             return gameObject;

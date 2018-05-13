@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+//Seting custom event systems, used to test events
 [System.Serializable]
 public class myEvent : UnityEvent<int> { };
 public class CharController : MonoBehaviour {

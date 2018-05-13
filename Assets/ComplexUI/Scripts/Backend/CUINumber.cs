@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 namespace CUI
 {
+    //Used on text elements that are intended to be numbers only
+    //Has events that trigger when values is changed, format
+    //
     public class CUINumber : MonoBehaviour, ICUIElement
     {
         [SerializeField] private float m_value;
@@ -23,10 +26,6 @@ namespace CUI
         {
             m_text = GetComponentInChildren<Text>();
             m_text.text = m_value.ToString(m_format);
-        }
-        void Start()
-        {
-           
         }
         //
         private void OnDisable()

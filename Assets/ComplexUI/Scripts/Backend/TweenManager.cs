@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 namespace CUI {
+    //Tween manager can beused to dynamically load in tweens at run time. 
+    //This uses resoures load (So having a resources folder and tweens) 
+   //Singleton approach to ensure only one manager exists 
     public class TweensManager : ScriptableObject {
         private static TweensManager m_instance = null;
         private List<Tween> m_tweens;
@@ -15,11 +18,6 @@ namespace CUI {
                 }
                 return m_instance;
             }
-        }
-
-        private void Start()
-        {
-           
         }
 
         public List<Tween> GetTweens()
